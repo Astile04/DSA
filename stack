@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+
+#define SIZE 100
+
+class Stack{
+	int arr[SIZE];
+	int top;
+	
+	public:
+		Stack(){
+			top=-1;
+		}
+		
+		void push(int x){
+			if(top==SIZE-1){
+				cout<<"Stack overflow";
+			}else{
+				top++;
+				arr[top]=x;
+			}
+		}
+		
+		
+		int pop(){
+			if(top==-1){
+				cout<<"Stack underflow";
+				return -1;
+			}else{
+				int popVal=arr[top];
+				top--;
+				return popVal;
+			}
+			
+			
+		}
+		
+		
+		void display(){
+			if(top==-1){
+				cout<<"Stack empty";
+			}
+			for(int i=top;i>=0;i--){
+				cout<<arr[i];
+				cout<<endl;
+			}
+		
+		}
+		
+};
+int main(){
+	Stack s;
+	int opt;
+	
+	do{
+		cout<<"1.Push 2.Pop 3.Display 4.Exit";
+		cout<<"Enter the option:";
+		cin>>opt;
+		
+		switch(opt){
+			case 1:
+				int x;
+				cout<<"Enter value to push:";
+				cin>>x;
+				s.push(x);
+				break;
+			case 2:
+				cout<<"Popped value is "<<s.pop();
+				break;
+			case 3:
+				s.display();
+				break;
+		}
+	}while(opt!=4);
+}
+
+
+
